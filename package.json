@@ -1,0 +1,35 @@
+{
+  "name": "encryptation",
+  "version": "1.0.0",
+  "description": "Here it is a front for encrypt and decrypt files with AES algorithm",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aleacevedo/encryption.git"
+  },
+  "author": "aleacevedo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aleacevedo/encryption/issues"
+  },
+  "homepage": "https://github.com/aleacevedo/encryption#readme",
+  "dependencies": {
+    "antd": "^4.12.3",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.1",
+    "@babel/preset-env": "^7.13.5",
+    "@babel/preset-react": "^7.12.13",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "html-loader": "^2.1.1",
+    "html-webpack-plugin": "^5.2.0",
+    "webpack": "^5.24.2",
+    "webpack-cli": "^4.5.0"
+  }
+}
