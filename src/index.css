@@ -1,0 +1,55 @@
+.logo {
+  height: 32px;
+  margin: 16px;
+  background: rgba(255, 255, 255, 0.2);
+}
+.site-layout-background {
+  background: rgb(61, 98, 119);
+}
+.site-layout {
+  background: rgb(136, 150, 165);
+}
+
+[data-theme="dark"] .site-layout .site-layout-background {
+  background: #1e263d;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* needed for container min-height */
+}
+
+.multiform {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+.multiform-tittle {
+  font-size: 40px;
+  padding: 40px;
+}
+
+.multiform-container {
+  position: relative;
+  min-height: 100%;
+}
+
+@media (max-width: 990px) {
+  .multiform-textarea {
+    min-width: 80%;
+    width: 500px;
+    min-height: 40%;
+  }
+}
+
+@media (min-width: 990px) {
+  .multiform-textarea {
+    min-width: 800px;
+  }
+}

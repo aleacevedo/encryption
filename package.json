@@ -4,7 +4,8 @@
   "description": "Here it is a front for encrypt and decrypt files with AES algorithm",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --mode production",
+    "start": "webpack serve --open --mode development"
   },
   "repository": {
     "type": "git",
@@ -27,9 +28,12 @@
     "@babel/preset-react": "^7.12.13",
     "babel-loader": "^8.2.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "css-loader": "^5.1.0",
     "html-loader": "^2.1.1",
     "html-webpack-plugin": "^5.2.0",
+    "style-loader": "^2.0.0",
     "webpack": "^5.24.2",
-    "webpack-cli": "^4.5.0"
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2"
   }
 }
