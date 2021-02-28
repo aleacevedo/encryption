@@ -21,8 +21,13 @@ const validateMessages = {
   },
 };
 
-const MultiForm = ({ name, onFinish, type }) => {
+const MultiForm = ({ name, action, type }) => {
   const [openModal, setOpenModal] = useState(false);
+
+  const onFinish = (value) => {
+      setOpenModal(true);
+      action(value);
+  }
 
   return (
     <>

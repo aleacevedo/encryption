@@ -25,6 +25,7 @@ body {
   justify-content: right;
   align-items: right;
   display: flex;
+  flex-direction: column;
   -webkit-flex-direction: column;
 }
 
@@ -40,6 +41,7 @@ body {
   justify-content: center;
   align-items: center;
   -webkit-flex-direction: column;
+  flex-direction: column;
 }
 
 
