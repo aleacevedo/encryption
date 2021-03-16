@@ -1,24 +1,46 @@
 import React from "react";
 import { Layout, Menu } from "antd";
 
-import saved from "../data/saved";
-
 const { Sider } = Layout;
 const { SubMenu } = Menu;
 
-const SideBar = () => {
+const renderNestedMenu = (items, nestedKey = "") => {
+  return Object.keys(items).map((key) => {
+    const item = items[key];
+    const newKey = nestedKey === "" ? key : `${nestedKey}-${key}`;
+    return item.isNested ? (
+      <SubMenu key={newKey} title={item.title}>
+        {renderNestedMenu(item.nested, newKey)}
+      </SubMenu>
+    ) : (
+      <Menu.Item key={newKey}>{item.title}</Menu.Item>
+    );
+  });
+};
+
+const getComponent = (items, keyPath) => {
+  const nextKey = keyPath[0];
+  if (keyPath.length > 1)
+    return getComponent(items[nextKey].nested, keyPath.slice(-1));
+  return items[nextKey].component;
+};
+
+const SideBar = ({ items, onSelect }) => {
+  const onClick = ({ item, key }) => {
+    const component = getComponent(items, key.split("-"));
+    onSelect(component);
+  };
+
   return (
     <Sider breakpoint="lg" collapsedWidth="0">
       <div className="logo" />
-      <Menu theme="dark" mode="inline" defaultSelectedKeys={["0"]}>
-        <Menu.Item key="0">Home</Menu.Item>
-        <SubMenu key="sub1" title="Saved">
-          {saved.map((file, indx) => (
-            <Menu.Item key={`sub-${indx}`}>{file.tittle}</Menu.Item>
-          ))}
-        </SubMenu>
-        <Menu.Item key="2">Decrypt</Menu.Item>
-        <Menu.Item key="3">Encrypt</Menu.Item>
+      <Menu
+        theme="dark"
+        mode="inline"
+        defaultSelectedKeys={["encrypt"]}
+        onSelect={onClick}
+      >
+        {renderNestedMenu(items)}
       </Menu>
     </Sider>
   );
