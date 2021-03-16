@@ -1,16 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+import AES from "crypto-js/aes";
 
 import MultiForm from "./MultiForm";
 
-const EncryptForm = ({ message = "" }) => {
+const EncryptForm = ({ deafultMessage = "" }) => {
+  const [encryptedMessage, setEncryptedMessage] = useState("");
+
   const encrypt = (values) => {
-    console.log(values);
+    const password = values.encrypt.password;
+    const message = values.encrypt.message;
+
+    setEncryptedMessage(AES.encrypt(message, password).toString());
   };
 
   return (
     <MultiForm
-      message={message}
-      type="Encrypt"
+      message={deafultMessage}
+      processedMessage={encryptedMessage}
+      type="encrypt"
       name="Encrypt"
       action={encrypt}
     />
