@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Input, Button, Row, Col, Modal } from "antd";
 
 const layout = {
@@ -21,25 +21,38 @@ const validateMessages = {
   },
 };
 
-const MultiForm = ({ name, action, type }) => {
+const MultiForm = ({
+  name,
+  action,
+  type,
+  message = "",
+  processedMessage = "",
+}) => {
+  const [form] = Form.useForm();
   const [openModal, setOpenModal] = useState(false);
 
   const onFinish = (value) => {
-      setOpenModal(true);
-      action(value);
-  }
+    setOpenModal(true);
+    action(value);
+  };
+
+  useEffect(() => {
+    form.setFieldsValue({ [type]: { message } });
+  }, [message]);
 
   return (
     <>
-      <h1 className="multiform-tittle">{type}</h1>
+      <h1 className="multiform-tittle">{name}</h1>
       <Form
         layout="vertical"
         size="large"
         {...layout}
-        name={name}
+        name={`${name}-${message}`}
         onFinish={onFinish}
         validateMessages={validateMessages}
         className="multiform"
+        initialValues={initialValues}
+        form={form}
       >
         <Form.Item
           name={[type, "message"]}
@@ -53,6 +66,7 @@ const MultiForm = ({ name, action, type }) => {
           <Input.TextArea
             style={{ minHeight: "250px" }}
             className="multiform-textarea"
+            //defaultValue={message}
           />
         </Form.Item>
         <Form.Item
@@ -64,11 +78,11 @@ const MultiForm = ({ name, action, type }) => {
             },
           ]}
         >
-          <Row>
-            <Col span={16}>
-              <Input.Password />
+          <Row align="bottom">
+            <Col span={19}>
+              <Input.Password className="multiform-password" />
             </Col>
-            <Col span={8}>
+            <Col span={1} offset={4}>
               <Button type="primary" htmlType="submit">
                 {type}
               </Button>
@@ -76,10 +90,16 @@ const MultiForm = ({ name, action, type }) => {
           </Row>
         </Form.Item>
       </Form>
-      <Modal title="Basic Modal" visible={openModal}>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+      <Modal
+        title="Resultado"
+        visible={openModal}
+        centered
+        onCancel={() => setOpenModal(false)}
+        onOk={() => setOpenModal(false)}
+        className="multiform-modal"
+        size="large"
+      >
+        <p className="multiform-modal-text">{processedMessage}</p>
       </Modal>
     </>
   );

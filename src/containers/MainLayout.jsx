@@ -5,7 +5,7 @@ import Sidebar from "../components/SideBar";
 
 const { Content, Footer } = Layout;
 
-const MainLayout = ({ children, ...props }) => {
+const MainLayout = ({ children, sideItems, sideOnSelect, ...props }) => {
   return (
     <Layout
       style={{
@@ -14,12 +14,12 @@ const MainLayout = ({ children, ...props }) => {
         position: "fixed" /* needed for footer positioning*/,
       }}
     >
-      <Sidebar />
+      <Sidebar items={sideItems} onSelect={sideOnSelect} />
       <Layout className="site-layout">
         <Content
           style={{
             margin: "24px 16px 24px",
-            display: "flex"
+            display: "flex",
           }}
         >
           <div className="site-layout-background multiform-container">
