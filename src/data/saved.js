@@ -1,20 +1,3 @@
-const saved = [
-  {
-    tittle: "First Saved",
-    message: "Esto es un mensaje secreto",
-  },
-  {
-    tittle: "Second Saved",
-    message: "Esto es un mensaje secreto",
-  },
-  {
-    tittle: "Third Saved",
-    message: "Esto es un mensaje secreto",
-  },
-  {
-    tittle: "Fourth Saved",
-    message: "Esto es un mensaje secreto",
-  },
-];
-
+const saved =
+  "U2FsdGVkX19ibNHh21XoR8vQI9HTS7NSh08KtkVkq944nAkY5KezBSlMRUKujspQh3VLn9Ji+hNrpLI2/tvMCo1JD4o90bi69A0mzErZXg1wFndh13v3I8PUuufsHCBlH4CyD5CodztK9ThjungLu+OVUW6UWLmSm7iSryqxkjpzdMaDuGLb+apWcu4BUS2mPLDliWIeiT3MfXmizanm7+2QbrRn+e3gJFJsO/+ToX2xcgHwLzOfYQnrz9z4IpyFLF3rbI+KpV0pJuzubC9N9wshn8SnXxigsxBuVfl0LJc=";
 export default saved;
