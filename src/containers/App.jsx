@@ -1,12 +1,18 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 
 import MainLayout from "./MainLayout";
 import EncryptForm from "../components/EncryptForm";
 import DecryptForm from "../components/DecryptForm";
 import { getEncryptedData } from "../services/data";
 
-const sideBarItems = () => {
-  const saved = getEncryptedData("test_password");
+const sideBarItems = (hash) => {
+  let saved = [];
+  try {
+    saved = getEncryptedData(hash);
+  } catch (e) {
+    console.log(`Error decrypt: ${e.message}`);
+  }
 
   return {
     encrypt: {
@@ -28,13 +34,17 @@ const sideBarItems = () => {
   };
 };
 
+const getQueryParams = () => {
+  return new URLSearchParams(useLocation().search);
+};
+
 const App = () => {
   const [componet, setComponent] = useState(null);
-
-  //if (!componet) return null;
+  const queryParams = getQueryParams();
+  const hashValue = queryParams.get("hash_value") || "";
 
   return (
-    <MainLayout sideItems={sideBarItems()} sideOnSelect={setComponent}>
+    <MainLayout sideItems={sideBarItems(hashValue)} sideOnSelect={setComponent}>
       {componet}
     </MainLayout>
   );

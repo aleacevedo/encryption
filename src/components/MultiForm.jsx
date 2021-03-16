@@ -51,7 +51,6 @@ const MultiForm = ({
         onFinish={onFinish}
         validateMessages={validateMessages}
         className="multiform"
-        initialValues={initialValues}
         form={form}
       >
         <Form.Item
@@ -66,7 +65,6 @@ const MultiForm = ({
           <Input.TextArea
             style={{ minHeight: "250px" }}
             className="multiform-textarea"
-            //defaultValue={message}
           />
         </Form.Item>
         <Form.Item
