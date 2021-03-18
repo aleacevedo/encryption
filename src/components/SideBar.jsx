@@ -25,7 +25,7 @@ const getComponent = (items, keyPath) => {
   return items[nextKey].component;
 };
 
-const SideBar = ({ items, onSelect }) => {
+const SideBar = ({ items, onSelect, defaultSelectedKeys }) => {
   const onClick = ({ item, key }) => {
     const component = getComponent(items, key.split("-"));
     onSelect(component);
@@ -37,7 +37,7 @@ const SideBar = ({ items, onSelect }) => {
       <Menu
         theme="dark"
         mode="inline"
-        defaultSelectedKeys={["encrypt"]}
+        defaultSelectedKeys={defaultSelectedKeys}
         onSelect={onClick}
       >
         {renderNestedMenu(items)}

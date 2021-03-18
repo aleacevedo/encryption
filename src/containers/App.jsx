@@ -44,7 +44,11 @@ const App = () => {
   const hashValue = queryParams.get("hash_value") || "";
 
   return (
-    <MainLayout sideItems={sideBarItems(hashValue)} sideOnSelect={setComponent}>
+    <MainLayout
+      sideItems={sideBarItems(hashValue)}
+      sideOnSelect={setComponent}
+      defaulSelectedKeys={["encrypt"]}
+    >
       {componet}
     </MainLayout>
   );
